@@ -1,19 +1,24 @@
 import React from "react";
-
+import ChildExample from "./ChildExample";
 const myButton = <button>button of MyExample</button>;
 const myDiv = <div>đầu buồi </div>;
-let name = "Quocan";
+
 class MyExample extends React.Component {
   state = {
-    username: "",
-    password: "",
+    name: "",
+    age: "",
   };
 
-  handleOnChange = (event) => {
+  handleOnChangeName = (event) => {
     //console.log(name, " event target: ", event.target, " event: ", event);
     this.setState({
-      username: event.target.value,
-      password: event.target.value,
+      name: event.target.value,
+    });
+  };
+  handleOnChangeAge = (event) => {
+    //console.log(name, " event target: ", event.target, " event: ", event);
+    this.setState({
+      age: event.target.value,
     });
   };
 
@@ -29,28 +34,19 @@ class MyExample extends React.Component {
   render() {
     return (
       <>
-        {/* <div>
-          <input
-            value={this.state.name}
-            type="text"
-            onChange={(event) => this.handleOnChange(event)}
-          />
-          hello my name is {this.state.name}
-        </div> */}
-
         <form>
-          <label htmlFor="username">username: </label>
+          <label htmlFor="name">name: </label>
           <input
-            id="username"
+            id="name"
             type="text"
-            onChange={(event) => this.handleOnChange(event)}
+            onChange={(event) => this.handleOnChangeName(event)}
           />{" "}
           <br />
-          <label htmlFor="password">password: </label>
+          <label htmlFor="age">age: </label>
           <input
-            id="password"
+            id="age"
             type="text"
-            onChange={(event) => this.handleOnChange(event)}
+            onChange={(event) => this.handleOnChangeAge(event)}
           />{" "}
           <br />
           <input
@@ -59,7 +55,7 @@ class MyExample extends React.Component {
           />
         </form>
 
-        <div>my age : {this.state["password"]}</div>
+        <ChildExample name={this.state.name} age={this.state.age} />
         <button onClick={() => this.handleClick()}>Click me</button>
       </>
     );

@@ -1,8 +1,10 @@
+import { click } from "@testing-library/user-event/dist/click";
 import React from "react";
 class ChildExample extends React.Component {
   state = {
     name: "",
     age: "",
+    clickCount: 0,
   };
 
   handleOnChange = (event) => {
@@ -13,9 +15,7 @@ class ChildExample extends React.Component {
     });
   };
 
-  handleClick = () => {
-    alert("hello world");
-  };
+ 
 
   handleSubmitForm = (event) => {
     event.preventDefault();

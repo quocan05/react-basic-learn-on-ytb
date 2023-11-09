@@ -7,6 +7,7 @@ class MyExample extends React.Component {
   state = {
     name: "",
     age: "",
+    clickCount: 0,
   };
 
   handleOnChangeName = (event) => {
@@ -23,7 +24,14 @@ class MyExample extends React.Component {
   };
 
   handleClick = () => {
-    alert("hello world");
+    this.setState(
+      (state) => ({
+        clickCount: state.clickCount + 1, // Increment click count
+      }),
+      () => {
+        console.log("Clicked " + this.state.clickCount + " times"); // Log click count to console
+      }
+    );
   };
 
   handleSubmitForm = (event) => {
@@ -56,7 +64,9 @@ class MyExample extends React.Component {
         </form>
 
         <ChildExample name={this.state.name} age={this.state.age} />
-        <button onClick={() => this.handleClick()}>Click me</button>
+        <button onClick={() => this.handleClick()}>
+          Click me {this.state.clickCount} times
+        </button>
       </>
     );
   }
